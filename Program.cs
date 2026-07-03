@@ -1,9 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddRazorPages();
-
 var app = builder.Build();
 
 app.UseStaticFiles();
-app.MapRazorPages();
+app.UseDefaultFiles();
+
+app.MapGet("/convert", (double miles) =>
+{
+    double kilometers = miles * 1.60934;
+    return Results.Ok(new { kilometers });
+});
 
 app.Run();
