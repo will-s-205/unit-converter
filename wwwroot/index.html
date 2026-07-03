@@ -1,30 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> // Declare the document type as HTML5
+<html lang="en"> // Declare the document type and language
 
-<head>
-    <meta charset="UTF-8">
-    <title>Distance Converter</title>
+<head> // Head section of the HTML document
+    <meta charset="UTF-8"> // Character encoding for the document
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> // Responsive design for different screen sizes
+    <title>Distance Converter</title> // Title of the web page
 </head>
 
-<body>
-    <h2>Miles to Kilometers Converter</h2>
+<body> // Body section of the HTML document
+    <h2>Miles to Kilometers Converter</h2> // Heading for the converter
 
-    <label for="miles">Enter Miles:</label>
-    <input type="number" id="miles" step="any">
-    <button onclick="convert()">Convert</button>
+    <label for="miles">Enter Miles:</label> // Label for the miles input field
+    <input type="number" id="miles" step="any"> // Input field for entering miles
+    <button onclick="convert()">Convert</button> // Button to trigger the conversion
 
     <h3 id="result"></h3>
 
-    <script>
-        async function convert() {
-            const miles = document.getElementById('miles').value;
-            if (!miles) return;
+    <script> // JavaScript function to handle the conversion
+        async function convert() { // Function to convert miles to kilometers
+            const miles = document.getElementById('miles').value; // Get the value from the input field
+            if (!miles) return; // If no value is entered, exit the function
 
-            const response = await fetch(`/convert?miles=${miles}`);
-            const data = await response.json();
+            const response = await fetch(`/convert?miles=${miles}`); // Fetch the conversion result from the server
+            const data = await response.json(); // Parse the JSON response
 
-            document.getElementById('result').innerText =
-                `${miles} miles is ${data.kilometers.toFixed(2)} km`;
+            document.getElementById('result').innerText = // Display the result in the result element
+                `${miles} miles is ${data.kilometers.toFixed(2)} km`; // Format the kilometers to 2 decimal places
         }
     </script>
 </body>
