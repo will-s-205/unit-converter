@@ -1,6 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
-// builder.WebHost.UseUrls("http://0.0.0.0:5000"); // replit
-builder.WebHost.UseUrls("http://localhost:5000/"); // local host
+builder.WebHost.UseUrls("http://0.0.0.0:5000"); // replit // comment this line if run locally
 var app = builder.Build();
 
 app.UseDefaultFiles();
