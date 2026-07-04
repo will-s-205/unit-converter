@@ -18,13 +18,13 @@
         <label for="miles">Enter Miles:</label><br>
         <input type="number" id="miles" step="any"><br>
         <button onclick="convertMiles()">Convert</button><br>
-        <input type="number" id="result">
+        <input type="number" id="miles-result" readonly>
         <hr>
         <h3>Fahrenheit to Celsius</h3>
         <label for="fahrenheit">Enter Fahrenheit:</label><br>
         <input type="number" id="fahrenheit" step="any"><br>
         <button onclick="convertFahrenheit()">Convert</button><br>
-        <input type="number" id="fahrenheit-result">
+        <input type="number" id="fahrenheit-result" readonly>
         <hr>
         <a href="https://github.com/will-s-205/unit-converter" target='_blank' rel="noopener noreferrer"
             class='footer'>by
@@ -40,7 +40,7 @@
             const response = await fetch(`/convert-miles?miles=${miles}`);
             const data = await response.json();
 
-            document.getElementById('result').value = data.kilometers.toFixed(1);
+            document.getElementById('miles-result').value = data.kilometers.toFixed(1);
         }
 
         async function convertFahrenheit() {
