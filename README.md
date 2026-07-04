@@ -1,6 +1,15 @@
 
 ===
 
+How to run:
+Win11
+1 Make sure to install dotnet8 SDK https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-8.0.422-windows-x64-installer
+2 open your terminal and find folder with project
+3 run "dotnet clean; dotnet build; dotnet run;"
+4 run "start http://localhost:5000" or manualy copy in your browser "http://localhost:5000"
+
+===
+
 NOTE for Replit:
 https://hamy.xyz/blog/2024-04_replit-fsharp-8
 

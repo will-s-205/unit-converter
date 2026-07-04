@@ -8,30 +8,28 @@
 
 <body>
     <h2>Miles to Kilometers Converter</h2>
-    
-    <label for="miles">Enter Miles:</label>
-    <input type="number" id="miles" step="any">
-    <button onclick="convertMiles()">Convert</button>
-    
-    <h3 id="result"></h3>
-    
-    <h2>Fahrenheit to Celsius Converter</h2>
 
+    <label for="miles">Enter Miles:</label> <!-- Input field for the user to enter the number of miles they want to convert. The 'step="any"' attribute allows for decimal input. -->
+    <input type="number" id="miles" step="any"> <!-- Button that, when clicked, calls the 'convertMiles' function to perform the conversion. -->
+    <button onclick="convertMiles()">Convert</button> <!-- This is where the result of the conversion will be displayed. The 'id' attribute allows the JavaScript function to easily access and update this element. -->
+    <h3 id="result"></h3>
+
+    <h2>Fahrenheit to Celsius Converter</h2>
     <label for="fahrenheit">Enter Fahrenheit:</label>
-    <input type="number" id="fahrenheit" step="any">    
+    <input type="number" id="fahrenheit" step="any">
     <button onclick="convertFahrenheit()">Convert</button>
     <h3 id="fahrenheit-result"></h3>
 
     <script>
         async function convertMiles() {
-            const miles = document.getElementById('miles').value;
-            if (!miles) return;
+            const miles = document.getElementById('miles').value; // Get the value from the input field with id 'miles'
+            if (!miles) return; // If the input is empty, exit the function
 
-            const response = await fetch(`/convert-miles?miles=${miles}`);
-            const data = await response.json();
+            const response = await fetch(`/convert-miles?miles=${miles}`); // Make a GET request to the server with the miles value as a query parameter
+            const data = await response.json(); // Parse the JSON response from the server 
 
-            document.getElementById('result').innerText =
-                `${miles} miles is ${data.kilometers.toFixed(2)} km`;
+            document.getElementById('result').innerText = // Update the inner text of the element with id 'result' to display the conversion result
+                `${miles} miles is ${data.kilometers.toFixed(2)} km`; // data.kilometers contains the converted value in kilometers, formatted to 2 decimal places
         }
 
         async function convertFahrenheit() {
