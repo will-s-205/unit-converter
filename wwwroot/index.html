@@ -8,23 +8,41 @@
 
 <body>
     <h2>Miles to Kilometers Converter</h2>
-
+    
     <label for="miles">Enter Miles:</label>
     <input type="number" id="miles" step="any">
-    <button onclick="convert()">Convert</button>
-
+    <button onclick="convertMiles()">Convert</button>
+    
     <h3 id="result"></h3>
+    
+    <h2>Fahrenheit to Celsius Converter</h2>
+
+    <label for="fahrenheit">Enter Fahrenheit:</label>
+    <input type="number" id="fahrenheit" step="any">    
+    <button onclick="convertFahrenheit()">Convert</button>
+    <h3 id="fahrenheit-result"></h3>
 
     <script>
-        async function convert() {
+        async function convertMiles() {
             const miles = document.getElementById('miles').value;
             if (!miles) return;
 
-            const response = await fetch(`/convert?miles=${miles}`);
+            const response = await fetch(`/convert-miles?miles=${miles}`);
             const data = await response.json();
 
             document.getElementById('result').innerText =
                 `${miles} miles is ${data.kilometers.toFixed(2)} km`;
+        }
+
+        async function convertFahrenheit() {
+            const fahrenheit = document.getElementById('fahrenheit').value;
+            if (!fahrenheit) return;
+
+            const response = await fetch(`/convert-fahrenheit?fahrenheit=${fahrenheit}`);
+            const data = await response.json();
+
+            document.getElementById('fahrenheit-result').innerText =
+                `${fahrenheit}°F is ${data.celsius.toFixed(2)}°C`;
         }
     </script>
 </body>

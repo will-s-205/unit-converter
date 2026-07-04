@@ -4,12 +4,19 @@ var app = builder.Build();
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
-app.MapGet("/convert", (double miles) =>
+app.MapGet("/convert-miles", (double miles) =>
 {
     double kilometers = miles * 1.60934;
     return Results.Ok(new { kilometers });
 });
 
+app.MapGet("/convert-fahrenheit", (double fahrenheit) =>
+{
+    double celsius = (fahrenheit - 32) * 5/9;
+    return Results.Ok(new { celsius });
+});
+
 app.MapFallbackToFile("index.html");
 
 app.Run();
+    
