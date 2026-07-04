@@ -12,19 +12,21 @@
 
 <body>
     <div class="box">
-        <h2>Unit Converter</h2>
+        <h1>Unit Converter</h1>
+        <button onclick="clearAll()">Clear All</button><br>
+        <br>
         <hr>
         <h3>Miles to Kilometers</h3>
         <label for="miles">Enter Miles:</label><br>
         <input type="number" id="miles" step="any"><br>
         <button onclick="convertMiles()">Convert</button><br>
-        <input type="number" id="miles-result" readonly>
+        <input type="number" id="kilometers" readonly>
         <hr>
         <h3>Fahrenheit to Celsius</h3>
         <label for="fahrenheit">Enter Fahrenheit:</label><br>
         <input type="number" id="fahrenheit" step="any"><br>
         <button onclick="convertFahrenheit()">Convert</button><br>
-        <input type="number" id="fahrenheit-result" readonly>
+        <input type="number" id="celsius" readonly>
         <hr>
         <a href="https://github.com/will-s-205/unit-converter" target='_blank' rel="noopener noreferrer"
             class='footer'>by
@@ -33,6 +35,13 @@
     </div>
 
     <script>
+        function clearAll() {
+            document.getElementById('miles').value = '';
+            document.getElementById('kilometers').value = '';
+            document.getElementById('fahrenheit').value = '';
+            document.getElementById('celsius').value = '';
+        }
+
         async function convertMiles() {
             const miles = document.getElementById('miles').value;
             if (!miles) return;
@@ -40,7 +49,7 @@
             const response = await fetch(`/convert-miles?miles=${miles}`);
             const data = await response.json();
 
-            document.getElementById('miles-result').value = data.kilometers.toFixed(1);
+            document.getElementById('kilometers').value = data.kilometers.toFixed(1);
         }
 
         async function convertFahrenheit() {
@@ -50,7 +59,7 @@
             const response = await fetch(`/convert-fahrenheit?fahrenheit=${fahrenheit}`);
             const data = await response.json();
 
-            document.getElementById('fahrenheit-result').value = data.celsius.toFixed(1);
+            document.getElementById('celsius').value = data.celsius.toFixed(1);
         }
     </script>
 </body>
